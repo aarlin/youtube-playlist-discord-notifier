@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2017"
+    ],
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "target": "es2017",
+    "outDir": "lib",
+    // "rootDir": "./",
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "strictNullChecks": true,
+    // "noImplicitReturns": true,
+    // "preserveConstEnums": true,
+    // "suppressImplicitAnyIndexErrors": true,
+    // "forceConsistentCasingInFileNames": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
