@@ -1,5 +1,5 @@
 {
-  "name": "discord-lambda-cron",
+  "name": "youtube-discord-lambda-cron",
   "version": "1.0.0",
   "description": "Set up a cron job for posting on a Discord channel",
   "main": "handler.js",
@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "minimal-request-promise": "^1.5.0",
     "source-map-support": "^0.5.10"
   },
