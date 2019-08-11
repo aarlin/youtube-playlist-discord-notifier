@@ -7,3 +7,7 @@ jspm_packages
 
 # Webpack directories
 .webpack
+
+# Development
+.vscode
+.env

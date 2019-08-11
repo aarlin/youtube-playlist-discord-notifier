@@ -1,50 +1,46 @@
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import * as dotenv from "dotenv";
-import axios from 'axios';
+import * as rp from 'request-promise';
+import { PlaylistVideo } from '../playlist-video.model';
 
 dotenv.config();
 
 const youtubePlaylistChecker = (_event : APIGatewayEvent, _context : Context, callback : Callback) => {
-    let part = 'snippet%2CcontentDetails';
-    let maxResults = 5;
-    let playlistId = 'PLqP2A2xeRzdT01h2soPovGa0UHcYEzsP5';
-    let url = `https://www.gogogleapis.com/youtube/v3/playlistItems?part=${part}&maxResults=${maxResults}&playlistId=${playlistId}&key=${process.env.YOUTUBE_API}`;
+    let part = 'snippet';
+    let maxResults = process.env.MAX_RESULTS;
+    let playlistId = process.env.PLAYLIST_ID;
+    let url = `https://www.googleapis.com/youtube/v3/playlistItems?part=${part}&maxResults=${maxResults}&playlistId=${playlistId}&key=${process.env.YOUTUBE_API}`;
     const options = {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
-            'Authorization': `Bearer ${process.env.YOUTUBE_API}` 
         },
         url: url
     };
-    axios(options);
-    callback(undefined, null);
+    
+    let playlistVideos: PlaylistVideo[];
+    rp(options).then(response => {
+        let parsedResponse = JSON.parse(response);
+        let playlistVideos = parsedResponse.items.map(item => {
+            return new PlaylistVideo(item.snippet.title, '', item.snippet.title, item.snippet.thumbnails.default.url, item.snippet.publishedAt);
+        });
 
-}
-
-
-const postMessage = (_event : APIGatewayEvent, _context : Context, callback : Callback) => {
-  let content = 'Testing new message'
-    var requestPromise = require('minimal-request-promise'),
-        options = {
-            headers: {
+        let latestVideo = playlistVideos[0];
+        let postOptions = {
+            'uri': process.env.DISCORD_WEBHOOK,
+            'method': 'POST',
+            'headers': {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                content: content
-            })
+            'body': latestVideo.toJson()
         };
 
-    requestPromise.post(process.env.DISCORD_WEBHOOK, options).then(
-        function (response: any) {
-            callback(undefined, response);
-            console.log('got response', response.body, response.headers);
-        },
-        function (response: any) {
-            console.log('got error', response.body, response.headers, response.statusCode, response.statusMessage);
-        }
-    );
+        rp(postOptions);
+
+    });
+    callback(undefined, { body: `Returned with ${playlistVideos.length} galleries` });
+
 }
 
-export { postMessage, youtubePlaylistChecker }
+export { youtubePlaylistChecker }

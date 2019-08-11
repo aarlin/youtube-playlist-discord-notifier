@@ -1,6 +1,9 @@
-# Template for AWS Lambda + Typescript + Cron + Discord Webhooks
+# Youtube Playlist Checker and Discord Poster
+AWS Lambda + Typescript + Cron + Youtube API + Discord Webhooks
 When IFTTT and Zapier are not enough  
 Set up a cron job for posting on a Discord channel  
+
+Built from this template: https://github.com/aarlin/discord-lambda
 
 # Installation
 ```
@@ -19,6 +22,9 @@ serverless config credentials --provider aws --key YOUR_ACCESS_KEY --secret YOUR
 Create a `.env` file that holds the webhook URL for Discord
 ```
 DISCORD_WEBHOOK=<YOUR WEBHOOK>
+YOUTUBE_API=<YOUR YOUTUBE API>
+MAX_RESULTS=<MAX RESULTS>
+PLAYLIST_ID=<YOUTUBE PLAYLIST ID>
 ```
 
 ## Start Service
@@ -69,27 +75,7 @@ Press F5 to start debugging
 
 ## References
 
-https://blog.shovonhasan.com/deploying-a-typescript-node-aws-lambda-function-with-serverless/
+https://developers.google.com/youtube/v3/docs/playlistItems/list
 
-https://www.jamestharpe.com/serverless-typescript-getting-started/
-
-https://www.rookout.com/wp-content/uploads/2018/10/The-Serverless-Debugging-Guide.pdf
-
-https://github.com/prisma/serverless-plugin-typescript/pull/109
-
-https://www.npmjs.com/package/@hewmen/serverless-plugin-typescript
-
-## Creating Template
-
-```
-serverless create --template aws-nodejs-typescript
-```
-
-```
-npm init
-```
-
-```
-npm i serverless-offline @hewmen/serverless-plugin-typescript --save-dev
-```
+https://console.developers.google.com/apis/dashboard
 
