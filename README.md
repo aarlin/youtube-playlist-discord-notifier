@@ -1,8 +1,9 @@
 # Youtube Playlist Checker and Discord Poster
-Scheduled checker for new videos in specified Youtube playlist
+Scheduled checker for new videos in specified Youtube playlist  
 Set up a cron job for posting on a Discord channel    
 
 When IFTTT and Zapier are not enough  
+Schedule more frequent checks on playlist or on a specified time  
 
 Built from this template: https://github.com/aarlin/discord-lambda  
 
@@ -27,6 +28,8 @@ YOUTUBE_API=<YOUR YOUTUBE API>
 MAX_RESULTS=<MAX RESULTS>
 PLAYLIST_ID=<YOUTUBE PLAYLIST ID>
 ```
+
+Change `serverless.yml` events schedule to match your frequency of checks. Note that this is in UTC timezone  
 
 # Start Service
 
