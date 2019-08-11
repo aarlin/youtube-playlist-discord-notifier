@@ -1,9 +1,10 @@
 # Youtube Playlist Checker and Discord Poster
-AWS Lambda + Typescript + Cron + Youtube API + Discord Webhooks
-When IFTTT and Zapier are not enough  
-Set up a cron job for posting on a Discord channel  
+Scheduled checker for new videos in specified Youtube playlist
+Set up a cron job for posting on a Discord channel    
 
-Built from this template: https://github.com/aarlin/discord-lambda
+When IFTTT and Zapier are not enough  
+
+Built from this template: https://github.com/aarlin/discord-lambda  
 
 # Installation
 ```
@@ -27,7 +28,7 @@ MAX_RESULTS=<MAX RESULTS>
 PLAYLIST_ID=<YOUTUBE PLAYLIST ID>
 ```
 
-## Start Service
+# Start Service
 
 To deploy to AWS
 ```
@@ -36,7 +37,7 @@ sls deploy -v
 
 To run locally after deploying to AWS
 ```
-sls invoke local -f cron
+sls invoke local -f youtube
 ```
 
 To see the cost usage
@@ -44,36 +45,18 @@ To see the cost usage
 serverless logs --function <function> --tail
 ```
 
-## Remove Service
+# Remove Service
 
 ```
 sls remove 
 ```
 
-## Debugging
+# Technologies
+* AWS Lambda with Serverless framework  
+* Typescript  
+* Youtube API  
 
-This is a sample `launch.json` file you should have if you are using Visual Studio Code
-```
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Debug API Gateway",
-            "program": "${workspaceFolder}/node_modules/serverless/bin/serverless",
-            "args": [
-                "offline",
-                "start"
-            ]
-        }
-    ]
-}
-```
-
-Press F5 to start debugging
-
-## References
+# References
 
 https://developers.google.com/youtube/v3/docs/playlistItems/list
 
