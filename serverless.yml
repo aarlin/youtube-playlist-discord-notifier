@@ -14,14 +14,15 @@ provider:
   region: us-east-1
   stage: dev
 
+package:
+  individually: true
+
 functions:
   cron:
     handler: src/handler.postMessage
     events:
-      - schedule: rate(3 minutes)
-
-# package:
-#   exclude:
-#     - node_modules/**/*
-#   include:
-#     handler.ts
+      - schedule: cron(0 23 * * ? *)
+  youtube:
+    handler: src/handler.youtubePlaylistChecker
+    events:
+      - schedule: cron(0 23 * * ? *)

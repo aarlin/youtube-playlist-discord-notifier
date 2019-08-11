@@ -28,7 +28,7 @@ To deploy to AWS
 sls deploy -v
 ```
 
-To run locally
+To run locally after deploying to AWS
 ```
 sls invoke local -f cron
 ```
@@ -92,3 +92,4 @@ npm init
 ```
 npm i serverless-offline @hewmen/serverless-plugin-typescript --save-dev
 ```
+
