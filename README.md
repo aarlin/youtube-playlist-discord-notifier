@@ -7,29 +7,34 @@ Schedule more frequent checks on playlist or on a specified time
 
 Built from this template: https://github.com/aarlin/discord-lambda  
 
+# Credentials
+
+Follow these links for serverless and Youtube credentials  
+
+https://serverless.com/framework/docs/providers/aws/guide/credentials/    
+https://elfsight.com/help/how-to-get-youtube-api-key/    
+
 # Installation
-```
-npm install
-```
 
-```
-npm i serverless -g
-```
+1. Install Node.js: https://nodejs.org/en/  
 
+2. Clone this repository  
 
-```
-serverless config credentials --provider aws --key YOUR_ACCESS_KEY --secret YOUR_SECRET_KEY
-```
+3. ```npm install```
 
-Create a `.env` file that holds the webhook URL for Discord
-```
-DISCORD_WEBHOOK=<YOUR WEBHOOK>
-YOUTUBE_API=<YOUR YOUTUBE API>
-MAX_RESULTS=<MAX RESULTS>
-PLAYLIST_ID=<YOUTUBE PLAYLIST ID>
-```
+4. ```npm i serverless -g```
 
-Change `serverless.yml` events schedule to match your frequency of checks. Note that this is in UTC timezone  
+5. ```serverless config credentials --provider aws --key YOUR_ACCESS_KEY --secret YOUR_SECRET_KEY```
+
+6. Create a `.env` file that holds the webhook URL for Discord
+    ```
+    DISCORD_WEBHOOK=<YOUR WEBHOOK>
+    YOUTUBE_API=<YOUR YOUTUBE API>
+    MAX_RESULTS=<MAX RESULTS>
+    PLAYLIST_ID=<YOUTUBE PLAYLIST ID>
+    ```
+
+7. Change `serverless.yml` events schedule to match your frequency of checks. Note that this is in UTC timezone  
 
 # Start Service
 
