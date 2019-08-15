@@ -2,7 +2,7 @@ export class PlaylistVideo {
     constructor(public title: string, public url: string, public description: string, public thumbnail: string, public publishedAt: Date | string) {
     }
 
-    toJson() {
+    toDiscordEmbedFormat() {
         return JSON.stringify({ 
             'embeds' : [{
                 'title': this.title,

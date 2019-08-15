@@ -38,7 +38,7 @@ const youtubePlaylistChecker = (_event : APIGatewayEvent, _context : Context, ca
                 'headers': {
                     'Content-Type': 'application/json'
                 },
-                'body': latestVideo.toJson()
+                'body': latestVideo.toDiscordEmbedFormat()
             };
     
             rp(postOptions);
