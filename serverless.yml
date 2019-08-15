@@ -21,4 +21,4 @@ functions:
   youtube:
     handler: src/handler.youtubePlaylistChecker
     events:
-      - schedule: cron(5 3 * * ? *)
+      - schedule: cron(38 3 * * ? *)
